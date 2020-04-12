@@ -17,7 +17,7 @@
       "patterns": [
         {
           "name": "keyword.control.ionshell",
-          "match": "\\b(let|if|fn|test|for|in|end|else|echo)\\b"
+          "match": "\\b(.|..|alias|and|bg|break|calc|case|cd|complete|continue|count|dirs|disown|drop|echo|else|end|eval|exec|exit|false|fg|fn|for|help|history|if|in|jobs|let|match|matches|mkdir|not|or|popd|pushd|pwd|read|set|source|status|suspend|test|time|true|unalias|wait|while\\b)"
         }
       ]
     },
