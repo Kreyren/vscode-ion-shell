@@ -6,10 +6,22 @@
       "include": "#keywords"
     },
     {
-      "include": "#comments"
+      "include": "#strings"
     },
     {
-      "include": "#strings"
+      "include": "#comment"
+    },
+    {
+      "include": "#singleQuoteString"
+    },
+    {
+      "include": "#Variable"
+    },
+    {
+      "include": "#number"
+    },
+    {
+      "include": "#process"
     }
   ],
   "repository": {
@@ -18,18 +30,20 @@
         {
           "name": "keyword.control.ionshell",
           "match": "\\b(.|..|alias|and|bg|break|calc|case|cd|complete|continue|count|dirs|disown|drop|echo|else|end|eval|exec|exit|false|fg|fn|for|help|history|if|in|jobs|let|match|matches|mkdir|not|or|popd|pushd|pwd|read|set|source|status|suspend|test|time|true|unalias|wait|while\\b)"
+        },
+        {
+          "name": "keyword.operator.ionshell",
+          "match": "(\\||-|>|\\^|\\|>|&|&\\||&>|\\|\\||&&|==|\\/|\\/\\/)"
         }
       ]
     },
     "comment": {
-      "begin": "#",
-      "beginCaptures": {
-        "0": {
-          "name": "punctuation.definition.comment.ionshell"
+      "patterns": [
+        {
+          "name": "comment.line.number-sign.ionshell",
+          "match": "#.*"
         }
-      },
-      "end": "\\n",
-      "name": "comment.line.number-sign.ionshell"
+      ]
     },
     "strings": {
       "name": "string.quoted.double.ionshell",
@@ -39,6 +53,51 @@
         {
           "name": "constant.character.escape.ionshell",
           "match": "\\\\."
+        },
+        {
+          "include": "#Variable"
+        }
+      ]
+    },
+    "Variable": {
+      "patterns": [
+        {
+          "name": "variable.language.ionshell",
+          "match": "\\$[a-zA-Z0-9_]+"
+        },
+        {
+          "name": "variable.language.ionshell",
+          "begin": "\\$\\{",
+          "end": "\\}"
+        },
+        {
+          "name": "variable.language.ionshell",
+          "begin": "@\\{",
+          "end": "\\}"
+        },
+        {
+          "name": "variable.language.ionshell",
+          "match": "@[a-zA-Z0-9_]+"
+        }
+      ]
+    },
+    "process": {
+      "patterns": [
+        {
+          "name": "string.interpolated.dollar.ionshell",
+          "match": "\\$\\(.*\\)"
+        },
+        {
+          "name": "string.interpolated.dollar.ionshell",
+          "match": "@\\(.*\\)"
+        }
+      ]
+    },
+    "number": {
+      "patterns": [
+        {
+          "name": "constant.numeric.ionshell",
+          "match": "[+-]?[0-9]*[.]?[0-9]+e?"
         }
       ]
     },
@@ -50,6 +109,9 @@
         {
           "name": "constant.character.escape.ionshell",
           "match": "\\\\."
+        },
+        {
+          "include": "#Variable"
         }
       ]
     }
